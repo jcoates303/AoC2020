@@ -16,14 +16,14 @@ fun loadData(path: String): List<String> {
 }
 
 // Initial map coordinates are at 0:0
-fun createTreeMap(input: List<String>): List<Pair<Int, Int>> {
-    val trees = emptyList<Pair<Int, Int>>().toMutableList()
+fun createTreeMap(input: List<String>): Set<Pair<Int, Int>> {
+    val trees = emptySet<Pair<Int, Int>>().toMutableSet()
     input.forEachIndexed { rowIdx, s ->
         s.forEachIndexed { colIdx, c ->
             if (c == tree) trees.add(rowIdx to colIdx)
         }
     }
-    return trees.toList()
+    return trees
 }
 
 fun mapSize(input: List<String>): Pair<Int, Int> {
@@ -44,7 +44,7 @@ operator fun Pair<Int, Int>.rem(b: Pair<Int, Int>): Pair<Int, Int> {
     return first % b.first to second % b.second
 }
 
-fun countHitsInPath(init: Pair<Int, Int>, slope: Pair<Int, Int>, mapModulo: Pair<Int, Int>, trees:List<Pair<Int,Int>>): Int {
+fun countHitsInPath(init: Pair<Int, Int>, slope: Pair<Int, Int>, mapModulo: Pair<Int, Int>, trees:Set<Pair<Int,Int>>): Int {
     var count = 0
     var pos = init - slope
     for(row in 0 until mapModulo.first step slope.first) {
