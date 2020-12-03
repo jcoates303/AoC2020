@@ -58,11 +58,7 @@ fun main() {
     val initialData = loadData("2020-Day3.txt")
     val treeMap = createTreeMap(initialData)
     val mapSize = mapSize(initialData)
-    val a = countHitsInPath(initialCoordinates, 1 to 1, mapSize, treeMap)
-    val b = countHitsInPath(initialCoordinates, 1 to 3, mapSize, treeMap)
-    val c = countHitsInPath(initialCoordinates, 1 to 5, mapSize, treeMap)
-    val d = countHitsInPath(initialCoordinates, 1 to 7, mapSize, treeMap)
-    val e = countHitsInPath(initialCoordinates, 2 to 1, mapSize, treeMap)
-    val m = a*b*c*d*e
-    println("$a * $b * $c * $d * $e = $m")
+    val paths = listOf(1 to 1, 1 to 3, 1 to 5, 1 to 7, 2 to 1).map { countHitsInPath(initialCoordinates, it, mapSize, treeMap) }
+    val m = paths.reduce { acc, i ->  acc * i }
+    println("$paths = $m")
 }
