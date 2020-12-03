@@ -2,10 +2,11 @@ package day01
 
 import common.InputData
 import java.lang.IllegalStateException
+import java.util.*
 
 const val target = 2020
 
-fun findPairsThatMatch(candidates:List<Int>, target:Int) {
+fun findTripletThatMatches(candidates: List<Int>, target:Int) {
     candidates.forEachIndexed { idx, value ->
         var filter1 = candidates.subList(idx, candidates.lastIndex)
         filter1.forEachIndexed { idx2, value2 ->
@@ -20,8 +21,8 @@ fun findPairsThatMatch(candidates:List<Int>, target:Int) {
 
 fun main() {
     try{
-        var values = InputData.readLines("2020-Day1.txt").map{it.toInt()}
-        findPairsThatMatch(values, target)
+        var values = InputData.readLines("2020-Day1.txt").map{it.toInt()}.toSortedSet().toList()
+        findTripletThatMatches(values, target)
     } catch(ise: IllegalStateException) {
         println(ise.message)
     }
