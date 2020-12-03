@@ -59,6 +59,6 @@ fun main() {
     val treeMap = createTreeMap(initialData)
     val mapSize = mapSize(initialData)
     val paths = listOf(1 to 1, 1 to 3, 1 to 5, 1 to 7, 2 to 1).map { countHitsInPath(initialCoordinates, it, mapSize, treeMap) }
-    val m = paths.reduce { acc, i ->  acc * i }
+    val m = paths.reduce(Int::times)
     println("$paths = $m")
 }
