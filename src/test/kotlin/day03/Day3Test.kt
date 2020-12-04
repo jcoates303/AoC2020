@@ -42,7 +42,4 @@ class Day3Test {
         treeMap.contains(2 to 1) shouldBe true
         treeMap.contains(2 to 0) shouldBe false
     }
-
-
-
 }
