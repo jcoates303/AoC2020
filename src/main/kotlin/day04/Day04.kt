@@ -147,6 +147,6 @@ fun altSolvePart2(): Int {
 fun main() {
     printAndMeasureDuration("Part One", ::solvePart1)
     printAndMeasureDuration("Part Two", ::solvePart2)
-    printAndMeasureDuration("Alt Part One", ::altSolvePart1)
-    printAndMeasureDuration("Alt Part Two", ::altSolvePart2)
+    printAndMeasureDuration("Alt Part One", ::altSolvePart1, 100)
+    printAndMeasureDuration("Alt Part Two", ::altSolvePart2, 100)
 }
