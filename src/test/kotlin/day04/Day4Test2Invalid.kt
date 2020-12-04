@@ -1,4 +1,4 @@
-package day04;
+package day04
 
 import day02.loadData
 import io.kotlintest.shouldBe
@@ -6,7 +6,7 @@ import org.junit.Test
 
 class Day4Test2Invalid {
 
-    var data = transformData(loadData("2020-Day4-Test2Invalid.txt"))
+    private var data = transformData(loadData("2020-Day4-Test2Invalid.txt"))
 
     @Test
     fun `first record is incorrect`() {
