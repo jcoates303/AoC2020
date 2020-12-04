@@ -1,11 +1,12 @@
 package day04
 
+import common.printAndMeasureDuration
 import day02.loadData
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
-var data = transformData(loadData("2020-Day4.txt"))
+var data = loadData("2020-Day4.txt")
 
 fun collapseData(list:List<String>):String {
     val o = emptyList<String>().toMutableList()
@@ -92,7 +93,15 @@ fun isValidPass2(p:Passport):Boolean {
 @Serializable
 data class Passport(val byr:Int? = null, val iyr:Int? = null, val eyr:Int? = null, val hgt:String? = null, val hcl:String? = null, val ecl:String? = null, val pid:String? = null, val cid:Int? = null)
 
+fun solvePart1():Int {
+    return transformData(data).filter { isValidPass1(it) }.count()
+}
+
+fun solvePart2():Int {
+    return transformData(data).filter { isValidPass2(it) }.count()
+}
+
 fun main() {
-    println( data.sumBy{ if(isValidPass1(it)) 1 else 0 } )
-    println( data.sumBy{ if(isValidPass2(it)) 1 else 0 } )
+    printAndMeasureDuration("Part One", ::solvePart1)
+    printAndMeasureDuration("Part Two", ::solvePart2)
 }
