@@ -4,8 +4,6 @@ import io.kotlintest.shouldBe
 import org.junit.Test
 
 class Day2Test {
-    var data = loadData("2020-Day2.txt")
-
     @Test
     fun `test first policy with given sample`() {
         validatePwd("1-3 a: abcde") shouldBe true
