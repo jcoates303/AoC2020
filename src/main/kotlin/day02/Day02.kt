@@ -1,8 +1,10 @@
 package day02
 
 import common.InputData
-import java.lang.IllegalStateException
+import common.printAndMeasureDuration
+
 val parser = "(\\d+)-(\\d+) (\\w): (\\w+)".toRegex()
+val data = InputData.readLines("2020-Day2.txt")
 
 fun loadData(path:String):List<String> {
     try{
@@ -15,7 +17,7 @@ fun loadData(path:String):List<String> {
 
 fun validatePwd(exp: String):Boolean {
     parser.findAll(exp).first() { m ->
-       var o1 = m.groupValues[1].toInt()
+       val o1 = m.groupValues[1].toInt()
        val o2 = m.groupValues[2].toInt()
         val c = m.groupValues[3]
        val s = m.groupValues[4]
@@ -26,7 +28,7 @@ fun validatePwd(exp: String):Boolean {
 
 fun validatePwd2(exp: String):Boolean {
     parser.findAll(exp).first() { m ->
-        var o1 = m.groupValues[1].toInt()
+        val o1 = m.groupValues[1].toInt()
         val o2 = m.groupValues[2].toInt()
         val c = m.groupValues[3][0]
         val s = m.groupValues[4]
@@ -40,22 +42,15 @@ fun validatePwd2(exp: String):Boolean {
     return false
 }
 
-fun solvePart1(values:List<String>): Int {
-    if(values.size > 0)
-        return values.count { validatePwd(it) }
-    else
-        return -1
+fun solvePart1(): Int {
+    return data.count { validatePwd(it) }
 }
 
-fun solvePart2(values:List<String>): Int {
-   if(values.size > 0)
-        return values.count { validatePwd2(it) }
-   else
-        return -1
+fun solvePart2(): Int {
+    return data.count { validatePwd2(it) }
 }
 
 fun main() {
-    val values = loadData("2020-Day2.txt")
-    println(solvePart1(values))
-    println(solvePart2(values))
+    printAndMeasureDuration("Part One",::solvePart1)
+    printAndMeasureDuration("Part Two",::solvePart2)
 }

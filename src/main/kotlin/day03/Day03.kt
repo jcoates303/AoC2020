@@ -1,19 +1,12 @@
 package day03
 
 import common.InputData
-import java.lang.IllegalStateException
+import common.printAndMeasureDuration
 
 const val tree = '#'
 val initialCoordinates = 0 to 0
 
-fun loadData(path: String): List<String> {
-    return try {
-        InputData.readLines(path)
-    } catch (ise: IllegalStateException) {
-        println(ise.message)
-        emptyList()
-    }
-}
+val data = InputData.readLines("2020-Day3.txt")
 
 // Initial map coordinates are at 0:0
 fun createTreeMap(input: List<String>): Set<Pair<Int, Int>> {
@@ -54,11 +47,11 @@ fun countHitsInPath(init: Pair<Int, Int>, slope: Pair<Int, Int>, mapModulo: Pair
     return count
 }
 
+fun solvePart2(): String {
+    val paths = listOf(1 to 1, 1 to 3, 1 to 5, 1 to 7, 2 to 1).map { countHitsInPath(initialCoordinates, it, mapSize(data), createTreeMap(data)) }
+    return "$paths = ${ paths.reduce(Int::times) }"
+}
+
 fun main() {
-    val initialData = loadData("2020-Day3.txt")
-    val treeMap = createTreeMap(initialData)
-    val mapSize = mapSize(initialData)
-    val paths = listOf(1 to 1, 1 to 3, 1 to 5, 1 to 7, 2 to 1).map { countHitsInPath(initialCoordinates, it, mapSize, treeMap) }
-    val m = paths.reduce(Int::times)
-    println("$paths = $m")
+    printAndMeasureDuration("Part Two",::solvePart2)
 }

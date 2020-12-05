@@ -1,10 +1,11 @@
 package day03
 
+import common.InputData
 import io.kotlintest.shouldBe
 import org.junit.Test
 
 class Day3Test {
-    private val testData by lazy { loadData("2020-Day3-Test.txt") }
+    private val testData by lazy { InputData.readLines("2020-Day3-Test.txt") }
     private val treeMap by lazy { createTreeMap(testData) }
     private val mapSize by lazy { mapSize(testData) }
     private val initCoords = 0 to 0
