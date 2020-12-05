@@ -1,7 +1,5 @@
 package common
 
-import java.lang.IllegalStateException
-
 class InputData {
     companion object {
         fun readLines(filename: String): List<String> {
