@@ -11,7 +11,7 @@ val data = InputData.read("2020-Day6.txt")
 fun main() {
     printAndMeasureDuration("Part One",::solvePart1)
     printAndMeasureDuration("Part Two",::solvePart2)
-    printAndMeasureDuration("Part Two",::solvePart2Alt)
+    printAndMeasureDuration("Part Two (Alternate)",::solvePart2Alt)
 }
 
 fun solvePart1():Any {
