@@ -88,9 +88,8 @@ fun solvePart2():String {
 }
 
 fun solveAltPart2():String{
-    // Idea is to use a bitmap of the plane, occupy all the seats and find the empty ones (value = 0)
-    val emptySeats = emptySeatsList(planeMap(readReservations(data)))
-    return emptySeats.first().toString()
+    // Idea is to use a bitmap of the plane, occupy all the seats and find the empty ones
+    return emptySeatsList(planeMap(readReservations(data))).first().toString()
 }
 
 fun main() {
